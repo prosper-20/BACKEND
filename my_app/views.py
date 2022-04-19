@@ -7,8 +7,8 @@ def index(request):
 
 
 def counter(request):
-    words = request.GET['text']
-    amount = len(words.split())
+    text = request.GET['text']
+    amount = len(text.split())
     context = {
         'amount': amount,
     }
