@@ -1,6 +1,7 @@
 <h1>This is the text counter</h1>
 
-<form method="get" action="counter">
+<form method="post" action="counter">
+    {% csrf_token %}
     <textarea name="text" cols="50" rows="10"></textarea><br>
     <input type="submit"/>
 </form>
