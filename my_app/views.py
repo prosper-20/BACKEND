@@ -32,7 +32,8 @@ def register(request):
                 return redirect("index")
         else:
             messages.info(request, "Both passowrds do not match")
-    return render(request, 'register.html')
+            # You just it from register.html to form-regsiter
+    return render(request, 'form-register.html')
 
 
 def counter(request):
