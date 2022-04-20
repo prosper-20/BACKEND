@@ -11,7 +11,7 @@ def index(request):
 
 def register(request):
     if request.method == "POST":
-        name = request.POST['name']
+        username = request.POST['name']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
@@ -19,17 +19,17 @@ def register(request):
         if password == password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, "Oops, email is already connected to another account")
-            elif User.objects.filter(name=name).exists():
+            elif User.objects.filter(username=username).exists():
                 messages.info(request, "Username already exists")
             else:
-                User.objects.create(
-                    name=name,
+                user = User.objects.create_user(
+                    username=username,
                     email=email,
                     password=password,
                 )
-                User.save()
+                user.save()
                 messages.info(request, "Your account has been created successfully")
-                return redirect("home")
+                return redirect("index")
         else:
             messages.info(request, "Both passowrds do not match")
     return render(request, 'register.html')
