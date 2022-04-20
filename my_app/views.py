@@ -1,6 +1,6 @@
 import imp
 import re
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -28,6 +28,8 @@ def register(request):
                     password=password,
                 )
                 User.save()
+                messages.info(request, "Your account has been created successfully")
+                return redirect("home")
         else:
             messages.info(request, "Both passowrds do not match")
     return render(request, 'register.html')

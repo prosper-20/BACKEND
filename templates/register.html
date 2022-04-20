@@ -1,5 +1,10 @@
 <h2>Sign Up Form</h2>
+
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
 <form action="" method="post">
+    {% csrf_token %}
     <p>Name:</p>
     <input type="text" name="name">
     <p>Email:</p>

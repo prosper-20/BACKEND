@@ -1,5 +1,11 @@
 <h1>This is the text counter</h1>
 
+
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+
+
 <form method="post" action="counter">
     {% csrf_token %}
     <textarea name="text" cols="50" rows="10"></textarea><br>
