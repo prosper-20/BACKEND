@@ -1,4 +1,4 @@
-$(function() {
+$(function(){
     $(".btn").click(function() {
     $(".form-signin").toggleClass("form-signin-left");
     $(".form-signup").toggleClass("form-signup-left");
