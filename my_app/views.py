@@ -13,7 +13,7 @@ def index(request):
 
 def register(request):
     if request.method == "POST":
-        username = request.POST['name']
+        username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
@@ -52,8 +52,8 @@ def login(request):
         else:
             messages.error(request, "Credentials not valid")
             return redirect("login")
-
-    return render(request, 'login.html')
+    #You changed from login.htnl to form-register
+    return render(request, 'form-regiser.html')
 
 def logout(request):
     auth.logout(request)
