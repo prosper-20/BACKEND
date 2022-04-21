@@ -1,8 +1,10 @@
+from email import message
 import imp
 import re
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib import auth
 
 # Create your views here.
 
@@ -34,6 +36,25 @@ def register(request):
             messages.info(request, "Both passowrds do not match")
             # You just it from register.html to form-regsiter
     return render(request, 'form-regiser.html')
+
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(request, username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, "You are logged in")
+            return redirect('index')
+        else:
+            messages.error(request, "Credentials not valid")
+            return redirect("login")
+
+    return render(request, 'login.html')
+        
 
 
 def counter(request):
