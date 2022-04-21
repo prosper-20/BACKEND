@@ -43,12 +43,12 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(request, username=username, password=password)
+        user = auth.authenticate(username=username, password=password)
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, "You are logged in")
-            return redirect('index')
+            # messages.success(request, "You are logged in")
+            return redirect('/')
         else:
             messages.error(request, "Credentials not valid")
             return redirect("login")
